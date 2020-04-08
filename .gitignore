@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+sentiment_data/*
+model_weights/*
 
 # C extensions
 *.so
