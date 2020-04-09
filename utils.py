@@ -50,5 +50,5 @@ def write_txt_file(data):
     tweet_ids = data['tweet_id']
     sample_ids = sample(tweet_ids, int(len(tweet_ids)/100))
     with open('tweet_ids.txt', 'w') as f:
-    for item in sample_ids:
-        f.write("%s\n" % item)
+        for item in sample_ids:
+            f.write("%s\n" % item)
