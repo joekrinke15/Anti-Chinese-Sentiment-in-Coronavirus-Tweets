@@ -1,5 +1,5 @@
 """Various functions/utilities used to analalyze coronavirus tweets."""
-
+from random import sample
 import pandas as pd
 from twarc import Twarc
 import numpy as np
@@ -26,16 +26,18 @@ def hydrate_tweets(data, consumer_key, consumer_secret, access_token, access_tok
     data.to_csv("HydratedTweets")
     return(data)
 
-#Remove all data before March. Generate a random sample of 10% of the tweets from each day. 
-def time_sample(data):
+#Remove all data before March.
+def date_filter(data):
     data['date'] = pd.to_datetime(data['date'])
     value_to_check = pd.Timestamp(2020,3,1)
     filter_mask = data['date'] > value_to_check
     filtered_df = data[filter_mask]
-    random_dataframe = pd.DataFrame(columns = ['tweet_id', 'date', 'time'])
-    for i in filtered_df['date'].unique():
-        date_subset = filtered_df[filtered_df['date']==i]
-        random_indices = (np.random.randint(low = 0, high = len(date_subset)-1, size = round(len(date_subset)*.05)))
-        random_subset = date_subset.iloc[random_indices,:]
-        random_dataframe = random_dataframe.append(random_subset)
-        return(random_dataframe)
+    return(filtered_df)
+    
+#Randomly sample 1% of tweets and create txt file of ids.
+def write_txt_file(data): 
+    tweet_ids = data['tweet_id']
+    sample_ids = sample(tweet_ids, int(len(tweet_ids)/100))
+    with open('tweet_ids.txt', 'w') as f:
+    for item in sample_ids:
+        f.write("%s\n" % item)

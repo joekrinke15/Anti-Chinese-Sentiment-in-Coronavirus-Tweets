@@ -1,0 +1,5 @@
+[main]
+consumer_key = AUDvVyvcG11PPbhABjcyAktFK
+consumer_secret = WwpIaowlcgdrNCxQVyPaiRNHLvBZGUVoxgwi33eXRLVefmBtyF
+access_token = 953803632608235520-gy56HeAiTMJllghaYaDmdcb9a61fpR8
+access_token_secret = 9rWU4PAFlH2n60RcAEjNxvKcx6sUVCl79O9hleLl8JjwP
