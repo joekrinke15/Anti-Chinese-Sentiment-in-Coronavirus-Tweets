@@ -2,6 +2,10 @@
 
 import pandas as pd
 from twarc import Twarc
+import re
+
+LINKS_re = re.compile(r'https?://.+?(\s|$)')
+NONALPHANUMERIC_re = re.compile(r'[^\w ]')
 
 def read_data():
     data = pd.read_csv('full_dataset-clean.tsv.gz', sep='\t', compression='gzip')
@@ -24,3 +28,10 @@ def hydrate_tweets(data, consumer_key, consumer_secret, access_token, access_tok
     
     data.to_csv("HydratedTweets")
     return(data)
+
+
+def clean_text(comment):
+    cleaned = re.sub(LINKS_re, ' ', comment)
+    cleaned = re.sub(NONALPHANUMERIC_re, ' ', cleaned)
+    cleaned = re.sub(r' +', ' ', cleaned)  # collapse consequtive spaces
+    return cleaned
