@@ -3,7 +3,7 @@ warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
 import tensorflow as tf
-tf.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 import argparse
 import numpy as np
@@ -63,7 +63,9 @@ if __name__ == "__main__":
 
     df = pd.read_csv(args.input_path, usecols=[args.id, args.text])
     model_input = preprocess(df[args.text], args.tokenizer_path)
-    predictions = get_predicted_labels(
-        model_input, args.model_path, args.batch_size)
-    df[LABELS] = predictions
+    predictions = get_predicted_labels(model_input, args.model_path, args.batch_size)
+    for i, label in enumerate(LABELS):
+        df[label] = predictions[:,i]
+        pass
+
     df.to_csv(args.output_path)
