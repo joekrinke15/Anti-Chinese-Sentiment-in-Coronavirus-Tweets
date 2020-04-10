@@ -27,7 +27,7 @@ LABELS = ['toxicity', 'severe_toxicity', 'identity_attack', 'insult', 'threat']
 def preprocess(text_list, tokenizer_path=TOK_PATH, maxlen=MAXLEN):
     print('cleaning input text....')
     cleaned_text = [clean_text(text) for text in tqdm(text_list)]
-    with open(TOK_PATH, 'rb') as handle:
+    with open(tokenizer_path, 'rb') as handle:
         tokenizer = pickle.load(handle)
 
     print('processing input ....')
