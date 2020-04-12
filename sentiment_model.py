@@ -68,4 +68,4 @@ if __name__ == "__main__":
         df[label] = predictions[:,i]
         pass
 
-    df.to_csv(args.output_path)
+    df.to_csv(args.output_path, index=False)
