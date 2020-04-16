@@ -2,7 +2,7 @@
 Sentiment analysis of Covid-19 Tweets
 
 ## Sentiment Model
-### data source
+### Data Source
 The model was trained on the data provided by the Conversation AI team
 
 https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/data
